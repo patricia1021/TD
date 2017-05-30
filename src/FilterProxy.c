@@ -34,7 +34,7 @@ int filterProxy(char *buffer,char *path,char *method, char *version, char *host)
     
 }
 
-int buscaLista(path, buffer)
+int buscaLista(char *path, char *buffer)
 {
 	
     // Procurar na Whitelist pelo host
