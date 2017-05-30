@@ -8,6 +8,10 @@
 + Se não estiver em nenhuma, olha nos dados da requisição, algum termo proibido. Se não tiver, faz como na lista branca. Se tiver, faz como na lista preta.
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 char *strstr(char *haystack, char *needle);
 
 int filterProxy(char *buffer,char *path,char *method, char *version, char *host)
@@ -16,6 +20,7 @@ int filterProxy(char *buffer,char *path,char *method, char *version, char *host)
     switch (host, buscaLista(path, buffer))
     {
         case 1:
+	mandaMsg_dest();
             criaLog();
             mandaMsg();
             break;
@@ -38,8 +43,9 @@ int buscaLista(path, buffer)
 
 	FILE *fp;
 	char linha[100];
-	fp = fopen("Whitelist.txt", "r");
-	fq = fopen("Blacklist.txt", "r")
+	fp = fopen("whitelist.txt", "r");
+	fq = fopen("blacklist.txt", "r");
+	fr = fopen("deny_terms.txt" "r");
 
 	if (fp == NULL)
 		return -1;
@@ -70,6 +76,9 @@ int buscaLista(path, buffer)
 	}
 	
 	fclose(fq);
+	
+	
+	
     // Procurar na Blacklist pelo host
     // Se achar, return 2
 
