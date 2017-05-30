@@ -12,21 +12,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *strstr(char *haystack, char *needle);
-
+int buscaLista(char *path,char *buffer);
 int filterProxy(char *buffer,char *path,char *method, char *version, char *host)
 {
 
     switch (host, buscaLista(path, buffer))
     {
         case 1:
-	mandaMsg_dest();
-            criaLog();
-            mandaMsg();
+	//mandaMsg_dest();
+          //  criaLog();
+            //mandaMsg();
             break;
         case 2:
-            criaLog();
-            mandaMsg();
+         //   criaLog();
+           // mandaMsg();
             break;
         default:
         break;
