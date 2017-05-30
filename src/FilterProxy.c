@@ -40,7 +40,7 @@ int buscaLista(char *path, char *buffer)
     // Procurar na Whitelist pelo host
     // Se achar, return 1
 
-	FILE *fp, fq, fr;
+	FILE *fp, *fq, *fr;
 	char linha[100];
 	char* resultado;
 	fp = fopen("whitelist.txt", "r");
