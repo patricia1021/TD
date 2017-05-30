@@ -41,46 +41,44 @@ int buscaLista(path, buffer)
     // Procurar na Whitelist pelo host
     // Se achar, return 1
 
-	FILE *fp;
+	FILE *fp, fq, fr;
 	char linha[100];
 	fp = fopen("whitelist.txt", "r");
 	fq = fopen("blacklist.txt", "r");
-	fr = fopen("deny_terms.txt" "r");
+	fr = fopen("deny_terms.txt", "r");
+	
 
 	if (fp == NULL)
 		return -1;
 
-	while (EOF != NULL)
+	while (fgets(linha, 100, fp) != NULL)
 	{
-		resultado = fgets(linha, 100, fp);
+		resultado = strstr(linha, path);
 
-		retorno = strstr(resultado, path);
-
-		if (retorno != NULL)
+		if (resultado != NULL)
 			return 1;
+		
+		if (feof (fp))
+			break;
 	}
-	
 	fclose(fp);
 	
 	if (fq == NULL)
 		return -1;
 	
-	while (EOF != NULL)
+	while (fgets(linha, 100, fq) != NULL)
 	{
-		resultado = fgets(linha, 100, fp);
+		resultado = strstr(linha, path);
 
-		retorno = strstr(resultado, path);
-
-		if (retorno != NULL)
-			return 2;
+		if (resultado != NULL)
+			return 1;
+		
+		if (feof (fq))
+			break;
 	}
-	
 	fclose(fq);
 	
-	
-	
-    // Procurar na Blacklist pelo host
-    // Se achar, return 2
+
 
     // Procura no deny terms termos dentro do buffer proibidos
     // Se achar, return 2
