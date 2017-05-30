@@ -43,6 +43,7 @@ int buscaLista(path, buffer)
 
 	FILE *fp, fq, fr;
 	char linha[100];
+	char* resultado;
 	fp = fopen("whitelist.txt", "r");
 	fq = fopen("blacklist.txt", "r");
 	fr = fopen("deny_terms.txt", "r");
