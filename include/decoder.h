@@ -20,3 +20,4 @@
 
 int decodeHTTP(char *buffer,char *path,char *type,char *method, char *version);
 int filterProxy(char *buffer,char *path,char *method, char *version, char *host);
+int buscaLista(char *path,char *buffer);
