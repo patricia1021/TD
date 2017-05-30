@@ -53,13 +53,23 @@ int buscaLista(path, buffer)
 		if (retorno != NULL)
 			return 1;
 	}
-
-	fclose(fp);
-
 	
+	fclose(fp);
+	
+	if (fq == NULL)
+		return -1;
+	
+	while (EOF != NULL)
+	{
+		resultado = fgets(linha, 100, fp);
 
+		retorno = strstr(resultado, path);
 
-
+		if (retorno != NULL)
+			return 2;
+	}
+	
+	fclose(fq);
     // Procurar na Blacklist pelo host
     // Se achar, return 2
 
