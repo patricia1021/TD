@@ -82,28 +82,28 @@ int decodeHTTP(char *buffer,char *path,char *method, char *version, char *host){
 }
 
 
-int buscaLista(char *path,char *buffer)
+int searchList(char *path,char *buffer)
 {
 
     // Procurar na Whitelist pelo host
     // Se achar, return 1
 
 	FILE *fp, *fq, *fr;
-	char linha[100];
-	char* resultado;
-	fp = fopen("whitelist.txt", "r");
-	fq = fopen("blacklist.txt", "r");
-	fr = fopen("deny_terms.txt", "r");
+	char line[100];
+	char* result;
+	fp = fopen(WHITE_LIST, "r");
+	fq = fopen(BLACK_LIST, "r");
+	fr = fopen(DENY_TERMS, "r");
 	
 
 	if (fp == NULL)
 		return -1;
 
-	while (fgets(linha, 100, fp) != NULL)
+	while (fgets(line, 100, fp) != NULL)
 	{
-		resultado = strstr(linha, path);
+		result = strstr(line, path);
 
-		if (resultado != NULL)
+		if (result != NULL)
 			return 1;
 		
 		if (feof (fp))
@@ -114,11 +114,11 @@ int buscaLista(char *path,char *buffer)
 	if (fq == NULL)
 		return -1;
 	
-	while (fgets(linha, 100, fq) != NULL)
+	while (fgets(line, 100, fq) != NULL)
 	{
-		resultado = strstr(linha, path);
+		result = strstr(line, path);
 
-		if (resultado != NULL)
+		if (result != NULL)
 			return 2;
 		
 		if (feof (fq))
@@ -129,11 +129,11 @@ int buscaLista(char *path,char *buffer)
 if (fr == NULL)
 		return -1;
 	
-	while (fgets(linha, 100, fq) != NULL)
+	while (fgets(line, 100, fq) != NULL)
 	{
-		resultado = strstr(linha, path);
+		result = strstr(line, path);
 
-		if (resultado != NULL)
+		if (result != NULL)
 			return 1;
 		
 		if (feof (fr))
@@ -150,7 +150,7 @@ if (fr == NULL)
 
 int filterProxy(char *buffer,char *path,char *method, char *version, char *host){
 	 
-	 switch (host, buscaLista(path, buffer))
+	 switch (host, searchList(path, buffer))
     {
         case 1:
        // msgDest();
