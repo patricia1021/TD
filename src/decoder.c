@@ -225,7 +225,33 @@ int grepHttpCode(char *http){
 	return atoi(aux);
 }
 
+int log(char *path,char *type,char *method, int cod)
+{
+	FILE *fp;
 
+	if (cod == 401)
+	{
+	fp = fopen("resources/log.txt", "w");
+	fputs
+
+	}
+
+	else if (cod == 403)
+	{
+
+	}
+
+	else if (cod == 500)
+	{
+
+	}
+
+	else
+	{
+		
+	}
+
+}
 
 
 
