@@ -225,7 +225,7 @@ int grepHttpCode(char *http){
 	return atoi(aux);
 }
 
-int log(char *path,char *type,char *method, int cod)
+int logMensagem(char *path,char *type,char *method, int cod)
 {
 	FILE *fp;
 
