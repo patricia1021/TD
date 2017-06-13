@@ -228,29 +228,25 @@ int grepHttpCode(char *http){
 int logMensagem(char *path,char *type,char *method, int cod)
 {
 	FILE *fp;
+	fp = ("/resources/log.txt","w")
 
-	if (cod == 401)
-	{
-	fp = fopen("resources/log.txt", "w");
-	fputs
+	switch(cod){
+		case 401:
+
+		fputs;
+			
+			break;
+		case 403: 
+			fputs;
+			break;
+		case 500:
+			fputs;
+			break;
+		default:
+			fputs;
 
 	}
-
-	else if (cod == 403)
-	{
-
-	}
-
-	else if (cod == 500)
-	{
-
-	}
-
-	else
-	{
-		
-	}
-
+	
 }
 
 
