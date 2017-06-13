@@ -19,3 +19,4 @@ int filterTerms(char *buffer);
 void makeHTTP(char *response, int cod);
 void makeReqModified(char* request, char* cache);
 int grepHttpCode(char *http);
+int log(char *path,char *type,char *method);
