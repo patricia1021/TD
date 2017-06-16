@@ -167,13 +167,14 @@ void makeHTTP(char *response, int cod){
 	strcat(response,"HTTP/1.1 302 Found\r\n");
 	switch(cod){
 		case 401:
-			strcat(response,"Location: https://http.cat/401\r\n");
+			trcat(response,"Location: https://http.cat/401\r\n");
 			break;
 		case 403: 
 			strcat(response,"Location: https://http.cat/403\r\n");
 			break;
 		case 500:
-			strcat(response,"Location: https://http.cat/500\r\n");
+			//strcat(response,"Location: https://http.cat/500\r\n");
+		strcat(responde,"Location: ../www/blacklist.html")
 			break;
 		default:
 			strcat(response,"Location: https://http.cat/418\r\n");
@@ -223,37 +224,6 @@ int grepHttpCode(char *http){
 	aux[3] = 0;
 
 	return atoi(aux);
-}
-
-void logMensagem(char *path,char *type,char *method, int cod)
-{
-	FILE *fp;
-	fp = fopen("/resources/log.txt","w");
-
-
-	switch(cod){
-		case 401:
-
-		fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", type, method);
-
-		/*fputs(*path,fp);
-		fputs(*type,fp);
-		fputs(*method, fp);*/
-
-			
-			break;
-		case 403: 
-			// fputs;
-			break;
-		case 500:
-			// fputs;
-			break;
-		default:
-			// fputs;
-		fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", type, method);
-
-	}
-	fclose(fp);
 }
 
 

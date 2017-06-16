@@ -76,17 +76,20 @@ void start(int connfd){
 
 	status = decodeHTTP(buffer,path,method,version,host);
 
+
 	filter = filterHost(host);
 
 	if(filter < 0 || status < 0){ //error
 		makeHTTP(response,500);
 		send(connfd,response,strlen(response),0);
+		logMensagem(host,method,500);
 		return;
 	}
 
 	if(filter == 2){ // blacklist
 		makeHTTP(response,401);
 		send(connfd,response,strlen(response),0);
+		logMensagem(host,method,401);
 		return;
 	}
 	
@@ -258,6 +261,29 @@ int recv_timeout(int sockfd, int timeout, char *response){
 	return total_size;
 
 
+}
+
+void logMensagem(char *host,char *method, int cod)
+{
+	FILE *fp;
+	fp = fopen("../resources/log.txt","w");
+
+
+	switch(cod){
+		case 401:
+			fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", host, method);	
+			break;
+		case 403: 
+			fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", host, method);
+			break;
+		case 500:
+			fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", host, method);
+			break;
+		default:
+			fprintf(fp, "O url %s utilizou o método %s para acessar o canal\n", host, method);
+
+	}
+	fclose(fp);
 }
 
 
