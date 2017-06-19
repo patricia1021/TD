@@ -40,4 +40,6 @@ struct addrinfo * getHostInfo(char *host);
 
 int recv_timeout(int sockfd, int timeout, char *response);
 
+void logMensagem(char *host,char *method, int cod);
+
 
