@@ -26,7 +26,7 @@ void insert(List **list, char *url, int max_len){
 
 	for(ptr = *list, i=1;ptr->next != NULL; ptr = ptr->next, i++){
 		if(ptr->url == NULL)
-			remove(ptr);
+			removeNode(&ptr);
 
 		printf("URL: ");
 		printf("%s\n",ptr->url);

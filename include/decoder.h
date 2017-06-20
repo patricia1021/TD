@@ -1,3 +1,6 @@
+#ifndef DECODER_H_
+#define DECODER_H_
+
 #include <stdlib.h>         /* exit */
 #include <stdio.h>          /* printf */
 #include <string.h>         /* bzero */
@@ -20,3 +23,5 @@ void makeHTTP(char *response, int cod);
 void makeReqModified(char* request, char* cache);
 int grepHttpCode(char *http);
 
+
+#endif
