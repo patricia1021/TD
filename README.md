@@ -16,7 +16,7 @@ make
 
 ### Log
 
-O log do sitema esta dividido em algumas áreas seguindo o padrão a baixo, o log se encotra no arquivo resources/log.txt e cada mensagem de log esta separadas por quebra de linha.
+O log do sitema esta dividido em áreas conforme o padrão a baixo. O log se encotra no arquivo resources/log.txt e cada mensagem de log está separada por quebra de linha.
 Cada linha começa com uma letra que define o tipo da mensagem.
 
 ```
