@@ -163,27 +163,48 @@ void makeHTTP(char *response, int cod){
 	
 	memset(response,0,BUFFSIZE);
 
-//#if HUE == 1
+#if HUE == 1
 	strcat(response,"HTTP/1.1 302 Found\r\n");
 	switch(cod){
-		case 401:
+		case 3:
 			strcat(response,"Location: https://http.cat/401\r\n");
 			break;
-		case 403: 
+		case 2: 
 			strcat(response,"Location: https://http.cat/403\r\n");
 			break;
-		case 500:
-			//strcat(response,"Location: https://http.cat/500\r\n");
-			strcat(response,"Location: ../www/blacklist.html");
+		case 1:
+			strcat(response,"Location: https://http.cat/500\r\n");
 			break;
 		default:
 			strcat(response,"Location: https://http.cat/418\r\n");
 
 	}
 	strcat(response,"\r\n");
-//#else
+#else
 
-//#endif
+	FILE *fp;
+	char line[500];
+	switch(cod){
+		case 1:
+			fp = fopen( "www/error.html", "r");
+			break;
+		case 2:
+			fp = fopen( "www/blacklist.html", "r");
+			break;
+		case 3: 
+			fp = fopen( "www/deny_terms.html", "r");
+			break;
+
+	}
+
+	strcpy(response,"HTTP/1.1 200 OK\r\n");
+	strcat(response,"\r\n");
+	
+	while (fgets(line, 100, fp) != NULL){
+		strcat(response,line);	
+	}
+
+#endif
 
 }
 
